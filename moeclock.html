@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Moe Clock MSK</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            overflow: hidden;
+            padding-top: 50px;
+        }
+
+        .clock-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .digit {
+            width: 100px;
+            height: auto;
+        }
+
+        .separator {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 120px;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 0 10px;
+            margin-top: 20px;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <img id="h1" class="digit" src="" alt="0">
+        <img id="h2" class="digit" src="" alt="0">
+
+        <div class="separator">:</div>
+
+        <img id="m1" class="digit" src="" alt="0">
+        <img id="m2" class="digit" src="" alt="0">
+    </div>
+
+    <script>
+        const baseUrl = "https://raw.githubusercontent.com/journey-ad/Moe-Counter/8995c3419539b2c41adf34bee8fa7b02e11aa1a1/assets/theme/original-new/";
+
+        function updateClock() {
+            const now = new Date();
+            const mskTime = new Intl.DateTimeFormat('ru-RU', {
+                timeZone: 'Europe/Moscow',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            }).format(now);
+
+            const [hours, minutes] = mskTime.split(':');
+
+            document.getElementById('h1').src = `${baseUrl}${hours[0]}.gif`;
+            document.getElementById('h2').src = `${baseUrl}${hours[1]}.gif`;
+            document.getElementById('m1').src = `${baseUrl}${minutes[0]}.gif`;
+            document.getElementById('m2').src = `${baseUrl}${minutes[1]}.gif`;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
