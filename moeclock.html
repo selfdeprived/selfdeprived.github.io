@@ -12,28 +12,43 @@
             align-items: flex-start;
             height: 100vh;
             overflow: hidden;
-            padding-top: 50px;
+            padding-top: 80px;
         }
 
         .clock-container {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
+            transform: scale(1.2);
         }
 
         .digit {
-            width: 100px;
+            width: 180px;
             height: auto;
+            image-rendering: pixelated;
         }
 
-        .separator {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 120px;
-            color: #ffffff;
-            font-weight: bold;
-            padding: 0 10px;
-            margin-top: 20px;
-            line-height: 1;
+        .pixel-separator {
+            width: 60px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .pixel-dot {
+            width: 12px;
+            height: 12px;
+            background: black;
+            position: relative;
+            box-shadow:
+                0 -6px 0 0 black, 0 6px 0 0 black, -6px 0 0 0 black, 6px 0 0 0 black,
+                0 -12px 0 0 white, 0 12px 0 0 white, -12px 0 0 0 white, 12px 0 0 0 white,
+                -6px -12px 0 0 white, 6px -12px 0 0 white, -6px 12px 0 0 white, 6px 12px 0 0 white,
+                -12px -6px 0 0 white, -12px 6px 0 0 white, 12px -6px 0 0 white, 12px 6px 0 0 white;
+            margin: 12px;
         }
     </style>
 </head>
@@ -43,7 +58,10 @@
         <img id="h1" class="digit" src="" alt="0">
         <img id="h2" class="digit" src="" alt="0">
 
-        <div class="separator">:</div>
+        <div class="pixel-separator">
+            <div class="pixel-dot"></div>
+            <div class="pixel-dot"></div>
+        </div>
 
         <img id="m1" class="digit" src="" alt="0">
         <img id="m2" class="digit" src="" alt="0">
@@ -51,7 +69,6 @@
 
     <script>
         const baseUrl = "https://raw.githubusercontent.com/journey-ad/Moe-Counter/8995c3419539b2c41adf34bee8fa7b02e11aa1a1/assets/theme/original-new/";
-
         function updateClock() {
             const now = new Date();
             const mskTime = new Intl.DateTimeFormat('ru-RU', {
