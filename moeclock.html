@@ -12,43 +12,41 @@
             align-items: flex-start;
             height: 100vh;
             overflow: hidden;
-            padding-top: 80px;
+            padding-top: 50px;
         }
 
         .clock-container {
             display: flex;
             align-items: center;
-            gap: 10px;
-            transform: scale(1.2);
+            gap: -5px;
         }
 
         .digit {
-            width: 180px;
+            width: 100px;
             height: auto;
-            image-rendering: pixelated;
         }
 
         .pixel-separator {
-            width: 60px;
-            height: 180px;
+            width: 30px;
+            height: 100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 45px;
+            gap: 30px;
+            image-rendering: pixelated;
         }
 
         .pixel-dot {
-            width: 12px;
-            height: 12px;
+            width: 4px;
+            height: 4px;
             background: black;
-            position: relative;
             box-shadow:
-                0 -6px 0 0 black, 0 6px 0 0 black, -6px 0 0 0 black, 6px 0 0 0 black,
-                0 -12px 0 0 white, 0 12px 0 0 white, -12px 0 0 0 white, 12px 0 0 0 white,
-                -6px -12px 0 0 white, 6px -12px 0 0 white, -6px 12px 0 0 white, 6px 12px 0 0 white,
-                -12px -6px 0 0 white, -12px 6px 0 0 white, 12px -6px 0 0 white, 12px 6px 0 0 white;
-            margin: 12px;
+                0 -4px 0 0 black, 0 4px 0 0 black, -4px 0 0 0 black, 4px 0 0 0 black,
+                0 -8px 0 0 white, 0 8px 0 0 white, -8px 0 0 0 white, 8px 0 0 0 white,
+                -4px -8px 0 0 white, 4px -8px 0 0 white, -4px 8px 0 0 white, 4px 8px 0 0 white,
+                -8px -4px 0 0 white, -8px 4px 0 0 white, 8px -4px 0 0 white, 8px 4px 0 0 white;
+            margin: 8px;
         }
     </style>
 </head>
@@ -69,6 +67,7 @@
 
     <script>
         const baseUrl = "https://raw.githubusercontent.com/journey-ad/Moe-Counter/8995c3419539b2c41adf34bee8fa7b02e11aa1a1/assets/theme/original-new/";
+
         function updateClock() {
             const now = new Date();
             const mskTime = new Intl.DateTimeFormat('ru-RU', {
